@@ -1,4 +1,4 @@
-import random
+
 import string
 import csv
 import pathlib
@@ -17,7 +17,7 @@ with open(csvPath) as csvfile:
     csv_header = next(csvreader)
     
 
-    
+    #initializing the variables
     total=0
     total_rows = 0
     totalchange_rows = 0
@@ -25,14 +25,21 @@ with open(csvPath) as csvfile:
     total_diff = 0
     max_profit = 0
     min_profit = 0
-
+#The total number of months included in the dataset
     for row in csvreader:
         total +=int(row[1])
         total_rows +=1
         current_plvalue = float(row[1])
-        
+
+  # The net total amount of "Profit/Losses" over the entire period     
         if total_rows > 1:
             diff = current_plvalue-prev_plvalue
+
+#The changes in "Profit/Losses" over the entire period, and then the average of those changes
+
+#The greatest increase in profits (date and amount) over the entire period
+
+#The greatest decrease in profits (date and amount) over the entire period
 
             if diff > 0 and diff > max_profit: 
                 max_profit = int(diff)
@@ -48,10 +55,12 @@ with open(csvPath) as csvfile:
 
         else:
             prev_plvalue = float(row[1])
+
+   #formatting the average_change to decimal place
         
     Average_change=round(total_diff/totalchange_rows,2)
     
-
+#printing the results
     print("Financial Analysis")
     print("-----------------------------")
     print("Total Months :",total_rows)
