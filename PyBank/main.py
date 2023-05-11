@@ -61,15 +61,18 @@ with open(csvPath) as csvfile:
     Average_change=round(total_diff/totalchange_rows,2)
     
 #printing the results
-    print("Financial Analysis")
-    print("-----------------------------")
-    print("Total Months :",total_rows)
-    print("Total :","$",total)  
-    print("Average Change : ","$",Average_change )
-    print("Greatest Increase in Profits : ",max_profit_date,"( $",max_profit,")")
-    print("Greatest Decrease in Profits : ",min_profit_date,"( $",min_profit,")")
+    outputFile = open('analysis/pybank.txt', 'w')
+    print("Financial Analysis", file = outputFile)
+    print("-----------------------------", file = outputFile)
+    print("Total Months :",total_rows, file = outputFile)
+    print("Total :","$",total, file = outputFile)  
+    print("Average Change : ","$",Average_change, file = outputFile )
+    print("Greatest Increase in Profits : ",max_profit_date,"( $",max_profit,")", file = outputFile)
+    print("Greatest Decrease in Profits : ",min_profit_date,"( $",min_profit,")", file = outputFile)
   
 
+
+outputFile.close()
 
 
   

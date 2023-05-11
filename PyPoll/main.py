@@ -2,12 +2,13 @@ import random
 import string
 import csv
 import pathlib
+import sys
 
 
 from pathlib import Path
 
 csvPath = Path("Resources/election_data.csv")
-
+outputFile = open('analysis/pypoll.txt', 'w')
 
 with open(csvPath) as csvfile:
 
@@ -27,10 +28,10 @@ with open(csvPath) as csvfile:
      
         if row[2] not in candidate_list:
             candidate_list.append(row[2])
-    print("Election Results")
-    print("-------------------------")
-    print("Total Votes :",total_rows)
-    print("-------------------------")   
+    print("Election Results", file = outputFile)
+    print("-------------------------", file = outputFile)
+    print("Total Votes :",total_rows, file = outputFile)
+    print("-------------------------", file = outputFile)   
 
  # The percentage of votes each candidate won
 
@@ -52,8 +53,12 @@ with open(csvPath) as csvfile:
           winner_name = (str(candidate_list[candidate_index]))
           
 # printing the results
-        print ((str(candidate_list[candidate_index])),percentage_of_votes,"%","(",votes,")") 
 
-    print("-------------------------") 
-    print("Winner : ",winner_name)   
-    print("-------------------------") 
+
+print ((str(candidate_list[candidate_index])),percentage_of_votes,"%","(",votes,")", file = outputFile) 
+
+print("-------------------------", file = outputFile) 
+print("Winner : ",winner_name, file = outputFile)   
+print("-------------------------", file = outputFile) 
+
+outputFile.close()
